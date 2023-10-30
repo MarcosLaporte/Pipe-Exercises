@@ -1,0 +1,73 @@
+<div class="container mt-5">
+	<h1 class="mb-3">Pipes</h1>
+	<form class="needs-validation" [formGroup]="ngPipes">
+		<div class="row">
+			<div class="col-md-6 mb-3">
+				<label for="upperCase">UpperCase</label>
+				<input type="text" class="form-control" id="upperCase" formControlName="upperCase" required>
+				<div class="text-success m-auto"
+					*ngIf="ngPipes.controls['upperCase'].errors === null">
+					<small id="upperCase">
+						{{ngPipes.get('upperCase')?.value | uppercase}}
+					</small>
+				</div>
+			</div>
+			<div class="col-md-6 mb-3">
+				<label for="lowerCase">Lower Case</label>
+				<input type="text" class="form-control" id="lowerCase" formControlName="lowerCase" required>
+				<div class="text-success m-auto"
+					*ngIf="ngPipes.controls['lowerCase'].errors === null">
+					<small id="lowerCase">
+						{{ngPipes.get('lowerCase')?.value | lowercase}}
+					</small>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6 mb-3">
+				<label for="date">Date</label>
+				<input type="text" class="form-control" id="date" formControlName="date" required>
+				<div class="text-success m-auto"
+					*ngIf="ngPipes.controls['date'].errors === null">
+					<small id="date">
+						{{ngPipes.get('date')?.value | date:'dd/MM/YYYY'}}
+					</small>
+				</div>
+			</div>
+			<div class="col-md-6 mb-3">
+				<label for="currency">currency</label>
+				<input type="text" class="form-control" id="currency" formControlName="currency" required>
+				<div class="text-success m-auto"
+					*ngIf="ngPipes.controls['currency'].errors === null">
+					<small id="currency">
+						{{ngPipes.get('currency')?.value | currency:'USD'}}
+					</small>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6 mb-3">
+				<label for="decimal">decimal</label>
+				<input type="text" class="form-control" id="decimal" formControlName="decimal" required>
+				<div class="text-success m-auto"
+					*ngIf="ngPipes.controls['decimal'].errors === null">
+					<small id="decimal">
+						{{ngPipes.get('decimal')?.value | number: '1.3'}}
+					</small>
+				</div>
+			</div>
+			<div class="col-md-6 mb-3">
+				<label for="percent">Percent</label>
+				<input type="text" class="form-control" id="percent" formControlName="percent" required>
+				<div class="text-success m-auto"
+					*ngIf="ngPipes.controls['percent'].errors === null">
+					<small id="percent">
+						{{ngPipes.get('percent')?.value | percent: '1.2'}}
+					</small>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
