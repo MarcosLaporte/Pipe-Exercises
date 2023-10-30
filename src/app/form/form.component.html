@@ -70,4 +70,61 @@
 			</div>
 		</div>
 	</form>
+
+	<h2 class="mb-3">My own pipes</h2>
+	<form [formGroup]="ownPipes">
+		<div class="row">
+			<div class="col-md-6 mb-3">
+				<label for="timePassed">Time passed since:</label>
+				<input type="datetime-local" class="form-control" id="timePassed" formControlName="timePassed" required>
+				<div class="text-success m-auto"
+					*ngIf="ownPipes.controls['timePassed'].errors === null && ownPipes.controls['timePassed'].touched">
+					<small id="timePassed">
+						{{ownPipes.get('timePassed')?.value | timePassed }}
+					</small>
+				</div>
+			</div>
+			<div class="col-md-5 mb-3">
+				<label for="charMask">Text to replace:</label>
+				<input type="text" class="form-control" id="charMask" formControlName="charMask" required>
+				<div class="text-success m-auto"
+					*ngIf="ownPipes.controls['charMask'].errors === null && ownPipes.controls['char'].errors === null">
+					<small id="charMask">
+						{{ownPipes.get('charMask')?.value | charMask:(ownPipes.get('char')?.value) }}
+					</small>
+				</div>
+			</div>
+			<div class="col-md-1 mb-3">
+				<label for="char">Char:</label>
+				<input type="text" class="form-control" id="char" formControlName="char" required>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6 mb-3">
+				<label for="longTextA">Long text A:</label>
+				<input type="text" class="form-control" id="longTextA" formControlName="longTextA" required>
+				<div class="text-success m-auto"
+					*ngIf="ownPipes.controls['longTextA'].errors === null">
+					<small id="longTextA">
+						{{ownPipes.get('longTextA')?.value | longText }}
+					</small>
+				</div>
+			</div>
+			<div class="col-md-5 mb-3">
+				<label for="longTextB">Long text B:</label>
+				<input type="text" class="form-control" id="longTextB" formControlName="longTextB" required>
+				<div class="text-success m-auto"
+					*ngIf="ownPipes.controls['longTextB'].errors === null && ownPipes.controls['maxLengthB'].errors === null">
+					<small id="longTextB">
+						{{ownPipes.get('longTextB')?.value | longText:(ownPipes.get('maxLengthB')?.value) }}
+					</small>
+				</div>
+			</div>
+			<div class="col-md-1 mb-3">
+				<label for="maxLengthB">Max length:</label>
+				<input type="number" min="1" class="form-control" id="maxLengthB" formControlName="maxLengthB" required>
+			</div>
+		</div>
+	</form>
 </div>

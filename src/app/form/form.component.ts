@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class FormComponent {
 	ngPipes: FormGroup;
+	ownPipes: FormGroup;
 
 	constructor(private fb: FormBuilder, private router: Router) {
 		this.ngPipes = fb.group({
@@ -18,6 +19,15 @@ export class FormComponent {
 			currency: [0, Validators.required],
 			decimal: [0, Validators.required],
 			percent: [0, Validators.required],
+		});
+
+		this.ownPipes = fb.group({
+			timePassed: [0, Validators.required],
+			longTextA: ['', Validators.required],
+			longTextB: ['', Validators.required],
+			maxLengthB: [10, ],
+			charMask: ['', Validators.required],
+			char: ['', [Validators.required, Validators.maxLength(1)]]
 		});
 	}
 
